@@ -1,0 +1,65 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@inject ShortcutsClient shortcuts
+
+<PageTitle>Krita Shortcuts</PageTitle>
+
+<div class="container text-light">
+    <h1 class="display-1 text-center">Krita Shortcuts</h1>
+    <div class="row justify-content-between">
+        <div class="col-6 col-md p-2">
+            <button @onclick="Undo" class="btn btn-danger btn-lg py-5 text-uppercase fw-bold w-100">
+                Undo
+            </button>
+        </div>
+
+        <div class="col-6 col-md p-2">
+            <button @onclick="Redo" class="btn btn-primary btn-lg py-5 text-uppercase fw-bold w-100">
+                Redo
+            </button>
+        </div>
+        <div class="col-12 col-md p-2">
+            <button @onclick="Erase" class="btn btn-info btn-lg py-5 text-uppercase fw-bold w-100">
+                Erase
+            </button>
+        </div>
+        <div class="col-12 col-md p-2">
+            <button @onclick="ClearLayer" class="btn btn-warning btn-lg py-5 text-uppercase fw-bold w-100">
+                Clear Layer
+            </button>
+        </div>
+        <div class="col-12 col-md p-2">
+            <button @onclick="FullScreen" class="btn btn-secondary btn-lg py-5 text-uppercase fw-bold w-100">
+                Full Screen
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    private void Undo()
+    {
+        shortcuts.Undo();
+    }
+
+    private void Redo()
+    {
+        shortcuts.Redo();
+    }
+
+    private void FullScreen()
+    {
+        shortcuts.FullScreen();
+    }
+
+    private void ClearLayer()
+    {
+        shortcuts.ClearLayer();
+    }
+
+    private void Erase()
+    {
+        shortcuts.Erase();
+    }
+}

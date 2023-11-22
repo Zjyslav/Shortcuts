@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option csharp_namespace = "ShortcutsServiceServer";
+
+service Shortcut {
+	rpc ExecuteShortcut (ShortcutRequest) returns (ShortcutResponse);
+}
+
+message ShortcutRequest {
+	string processName = 1;
+	string keyStroke = 2;
+}
+
+message ShortcutResponse{
+
+}
