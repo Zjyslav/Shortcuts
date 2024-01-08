@@ -7,39 +7,33 @@ public class ShortcutsClient
 {
     private readonly IConfiguration _config;
     private readonly ILogger<ShortcutsClient> _logger;
-    private string _profile;
 
     public ShortcutsClient(IConfiguration config, ILogger<ShortcutsClient> logger)
     {
         _config = config;
         _logger = logger;
-        _profile = _config.GetValue<string>("ActiveShortcutsProfile");
-        _logger.LogInformation("Profile: {profile}", _profile);
     }
 
-    public void Undo()
     {
-        ExecuteShortcut("Undo");
+        _logger.LogInformation("Executing shortcut: {profileName}: {shortcutName}", profileName, shortcutName);
     }
 
-    public void Redo()
     {
-        ExecuteShortcut("Redo");
+            _logger.LogError("Grpc:Shortcuts address not provided. Shortcut execution terminated.");
     }
 
-    public void FullScreen()
+        ShortcutRequest request = new ShortcutRequest
     {
-        ExecuteShortcut("FullScreen");
+            ProcessName = _config.GetValue<string>($"ShortcutProfiles:{profileName}:ProcessName"),
     }
 
-    public void ClearLayer()
+        _logger.LogInformation("Shortcut request: {ProcessName}, {KeyStroke}", request.ProcessName, request.KeyStroke);
     {
-        ExecuteShortcut("ClearLayer");
+            client.ExecuteShortcut(request);
     }
 
-    public void Erase()
     {
-        ExecuteShortcut("Erase");
+            _logger.LogError("Error while calling server (address: {grpcAddress})\n{ex.Message}", grpcAddress, ex.Message);
     }
 
     private void ExecuteShortcut(string shortcutName)

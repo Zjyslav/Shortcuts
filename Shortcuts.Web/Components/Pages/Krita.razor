@@ -1,6 +1,6 @@
-﻿@page "/"
+﻿@page "/Krita"
 @rendermode InteractiveServer
-@inject ShortcutsClient shortcuts
+@inject KritaService krita
 
 <PageTitle>Krita Shortcuts</PageTitle>
 
@@ -40,26 +40,26 @@
 
     private void Undo()
     {
-        shortcuts.Undo();
+        krita.Undo();
     }
 
     private void Redo()
     {
-        shortcuts.Redo();
+        krita.Redo();
     }
 
     private void FullScreen()
     {
-        shortcuts.FullScreen();
+        krita.FullScreen();
     }
 
     private void ClearLayer()
     {
-        shortcuts.ClearLayer();
+        krita.ClearLayer();
     }
 
     private void Erase()
     {
-        shortcuts.Erase();
+        krita.Erase();
     }
 }
