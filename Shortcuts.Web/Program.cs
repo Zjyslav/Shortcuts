@@ -1,5 +1,5 @@
-using KritaShortcuts;
-using KritaShortcuts.Components;
+using Shortcuts.Web;
+using Shortcuts.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 

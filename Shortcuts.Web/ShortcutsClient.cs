@@ -1,20 +1,20 @@
 ﻿using Grpc.Net.Client;
-using ShortcutsServiceServer;
+using Shortcuts.Server;
 
-namespace KritaShortcuts;
+namespace Shortcuts.Web;
 
 public class ShortcutsClient
 {
     private readonly IConfiguration _config;
     private readonly ILogger<ShortcutsClient> _logger;
-    private string profile;
+    private string _profile;
 
     public ShortcutsClient(IConfiguration config, ILogger<ShortcutsClient> logger)
     {
         _config = config;
         _logger = logger;
-        profile = _config.GetValue<string>("ActiveShortcutsProfile");
-        _logger.LogInformation("Profile: {profile}", profile);
+        _profile = _config.GetValue<string>("ActiveShortcutsProfile");
+        _logger.LogInformation("Profile: {profile}", _profile);
     }
 
     public void Undo()
@@ -46,12 +46,12 @@ public class ShortcutsClient
     {
         _logger.LogInformation("Executing shortcut: {shortcutName}", shortcutName);
         var channel = GrpcChannel.ForAddress(_config.GetValue<string>("Grpc:Shortcuts"));
-        var client = new ShortcutsServiceServer.Shortcut.ShortcutClient(channel);
+        var client = new Shortcuts.Server.Shortcut.ShortcutClient(channel);
 
         ShortcutRequest request = new ShortcutRequest
         {
-            ProcessName = _config.GetValue<string>($"ShortcutProfiles:{profile}:ProcessName"),
-            KeyStroke = _config.GetValue<string>($"ShortcutProfiles:{profile}:Shortcuts:{shortcutName}")
+            ProcessName = _config.GetValue<string>($"ShortcutProfiles:{_profile}:ProcessName"),
+            KeyStroke = _config.GetValue<string>($"ShortcutProfiles:{_profile}:Shortcuts:{shortcutName}")
         };
 
         _logger.LogInformation($"Shortcut request: {request.ProcessName}, {request.KeyStroke}");
