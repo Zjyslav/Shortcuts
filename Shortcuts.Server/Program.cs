@@ -1,5 +1,4 @@
-using Microsoft.Extensions.Hosting.WindowsServices;
-using ShortcutsServiceServer.Services;
+using Shortcuts.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

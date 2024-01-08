@@ -1,8 +1,9 @@
-# Krita Shortcuts App
-A simple application that allows user to fire shortcuts in Krita program on Windows machine via Blazor web app.
+# Shortcuts
+A simple application that allows user to fire shortcuts in a specified program on Windows machine via Blazor web app.
 
 ## Purpose
-The general purpose of this app is to help access shortcuts in [Krita](https://krita.org/) graphics program when using pen tablet without sufficient amount of buttons. Reaching keyboard and pushing up to 3 keys can be awkward while drawing and having to find a button in Krita to press can break a flow of your work, so I created a solution in form of a web app that you can open on your phone and have a few easy to press buttons ready.
+The general purpose of this app was initially to help access shortcuts in [Krita](https://krita.org/) graphics program when using pen tablet without sufficient amount of buttons. Reaching keyboard and pushing up to 3 keys can be awkward while drawing and having to find a button in Krita to press can break a flow of your work, so I created a solution in form of a web app that you can open on your phone and have a few easy to press buttons ready.
+I decided to expand the project to handle also other software, such as [Aseprite](https://www.aseprite.org/).
 
 ## How it works
 The solution consists of 2 projects.
@@ -12,7 +13,7 @@ The solution consists of 2 projects.
 This it the user interface. It has a few sample buttons, but any number you need can be added with ease. It uses gRPC to send request to Shortcuts Service.
 To use it in home scenario, you could e.g. publish this project to a folder, then host it on local network using IIS and then access it with your phone connected to your network.
 
-The list of shortcuts is defined in `appsettings.json`, so you can add new ones, and even change keystrokes associated with them in runtime. See [SendKeys Class Documentation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys?view=windowsdesktop-8.0) to see how the keystrokes should be formated.
+The list of shortcuts is defined in `appsettings.json`, so you can add new ones, and even change keystrokes associated with them in runtime. See [SendKeys Class Documentation](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.sendkeys?view=windowsdesktop-8.0) to see how the keystrokes should be formatted.
 
 Once a new shortcut is defined, you just need to add a public method to `ShortcutsClient` class that calls `ExecuteShortcut()` private method passing in the shortcut signature matching the definition in `appsettings.json` and then call this method from `Home.razor` page using a button.
 
@@ -21,7 +22,7 @@ You could take the `ShortcutsClient.cs` and `Protos/shortcut.proto` files and bu
 ### Shortcuts Service app
 This is a gRPC server app that runs in the background on your Windows machine where you want the shortcuts to be fired.
 
-When it receives a `ShortcutsRequest` message it looks for all processes with a given name, brings their main window to the foreground and imitates the specified keyboard input for each. In case of Krita, it uses just one process and one window (it automatically closes any new process I try to open after the first one), so loopingh through all processes it finds shouldn't cause any problems, but note that if you want to use this app with other programs, this behavior might not be what you want. In that case consider changing the logic of `ExecuteShortcut()` method in `ShortcutService` class.
+When it receives a `ShortcutsRequest` message it looks for all processes with a given name, brings their main window to the foreground and imitates the specified keyboard input for each. In case of Krita, it uses just one process and one window (it automatically closes any new process I try to open after the first one), so looping through all processes it finds shouldn't cause any problems, but note that if you want to use this app with other programs, this behavior might not be what you want. In that case consider changing the logic of `ExecuteShortcut()` method in `ShortcutService` class.
 
 This app can run only on Windows, because it uses `System.Windows.Forms.dll` and `user32.dll` libraries.
 
@@ -40,8 +41,8 @@ I started researching other ways of apps communicating. I came across **.NET Rem
 
 I started with Tim Corey's [Intro to gRPC in C# - How To Get Started](https://youtu.be/QyxCX2GYHxk?si=rlNoYoCu-e8a0Eex) YouTube video, which gave me enough basics and confidence to build my own gRPC server and add gRPC client capabilities to the app I already had.
 
-The plan I had at this point was to have a Blazor client app hosted on IIS and the server app running as a Windows service in the background on the same PC. For that I had to tweak `program.cs` a bit for it to be a viable Windows service, but it worked. However, it turned out that even though it's running, it doesn't do its intended task. I diagnosed the problem to be that even though the app finds the krita.exe process, it sees its `MainWindowHandle` property as 0. After some digging in the internet and trying some recomended solutions of refreshing the process, I [learned](https://stackoverflow.com/a/24294244/21318735, "Stack Overflow explanation") that Windows services are being run in a separate session than the regular desktop apps, so they don't have access to their window's handle.
+The plan I had at this point was to have a Blazor client app hosted on IIS and the server app running as a Windows service in the background on the same PC. For that I had to tweak `program.cs` a bit for it to be a viable Windows service, but it worked. However, it turned out that even though it's running, it doesn't do its intended task. I diagnosed the problem to be that even though the app finds the krita.exe process, it sees its `MainWindowHandle` property as 0. After some digging in the internet and trying some recommended solutions of refreshing the process, I [learned](https://stackoverflow.com/a/24294244/21318735, "Stack Overflow explanation") that Windows services are being run in a separate session than the regular desktop apps, so they don't have access to their window's handle.
 
-That's when I dedided that I don't need it to be a service, so I undid the tweaks to the app, found [a way for it to run without a console window visible](https://stackoverflow.com/a/2686476/21318735) and called it a day.
+That's when I decided that I don't need it to be a service, so I undid the tweaks to the app, found [a way for it to run without a console window visible](https://stackoverflow.com/a/2686476/21318735) and called it a day.
 
 The purpose I made this is to work with Krita, but the way it's built makes it possible to work with any process that has a visible window and all there needs to be changed is in the UI project.

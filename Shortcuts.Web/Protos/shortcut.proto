@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "ShortcutsServiceServer";
+option csharp_namespace = "Shortcuts.Server";
 
 service Shortcut {
 	rpc ExecuteShortcut (ShortcutRequest) returns (ShortcutResponse);

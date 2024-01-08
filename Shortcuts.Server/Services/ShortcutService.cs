@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace ShortcutsServiceServer.Services;
+namespace Shortcuts.Server.Services;
 
 public class ShortcutService : Shortcut.ShortcutBase
 {
@@ -46,6 +46,6 @@ public class ShortcutService : Shortcut.ShortcutBase
     }
 
     [DllImport("user32.dll")]
-    private static extern int SetForegroundWindow(IntPtr hWnd);
+    private static extern int SetForegroundWindow(nint hWnd);
 
 }
