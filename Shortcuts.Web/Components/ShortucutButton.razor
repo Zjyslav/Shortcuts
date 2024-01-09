@@ -1,0 +1,17 @@
+﻿<div class="col-@Col col-md p-2">
+    <button @attributes="AdditionalAttributes" class="btn btn-@Color btn-lg py-5 text-uppercase fw-bold w-100">
+        @Text
+    </button>
+</div>
+
+@code {
+    [Parameter]
+    public string Text { get; set; } = "";
+    [Parameter]
+    public int Col { get; set; } = 12;
+    [Parameter]
+    public string Color { get; set; } = "primary";
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
+}
