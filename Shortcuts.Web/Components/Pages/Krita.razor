@@ -12,28 +12,13 @@
 </ButtonsContainer>
 
 @code {
-    private void Undo()
-    {
-        krita.Undo();
-    }
+    private void Undo() => krita.Undo();
 
-    private void Redo()
-    {
-        krita.Redo();
-    }
+    private void Redo() => krita.Redo();
 
-    private void FullScreen()
-    {
-        krita.FullScreen();
-    }
+    private void FullScreen() => krita.FullScreen();
 
-    private void ClearLayer()
-    {
-        krita.ClearLayer();
-    }
+    private void ClearLayer() => krita.ClearLayer();
 
-    private void Erase()
-    {
-        krita.Erase();
-    }
+    private void Erase() => krita.Erase();
 }
