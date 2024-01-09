@@ -1,0 +1,13 @@
+﻿<PageTitle>@Title</PageTitle>
+
+    <h1 class="display-1 text-center">@Title</h1>
+<div class="row justify-content-between">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter, EditorRequired]
+    public RenderFragment ChildContent { get; set; } = default!;
+}

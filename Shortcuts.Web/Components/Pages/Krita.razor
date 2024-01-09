@@ -1,45 +1,17 @@
 ﻿@page "/Krita"
 @rendermode InteractiveServer
 @inject KritaService krita
+@layout ButtonsPageLayout
 
-<PageTitle>Krita Shortcuts</PageTitle>
-<div class="container">
-<div class="text-end">
-    <a class="text-uppercase link-light link-offset-2 link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="/">Back</a>
-</div>
-    <h1 class="display-1 text-center">Krita Shortcuts</h1>
-    <div class="row justify-content-between">
-        <div class="col-6 col-md p-2">
-            <button @onclick="Undo" class="btn btn-danger btn-lg py-5 text-uppercase fw-bold w-100">
-                Undo
-            </button>
-        </div>
-
-        <div class="col-6 col-md p-2">
-            <button @onclick="Redo" class="btn btn-primary btn-lg py-5 text-uppercase fw-bold w-100">
-                Redo
-            </button>
-        </div>
-        <div class="col-12 col-md p-2">
-            <button @onclick="Erase" class="btn btn-info btn-lg py-5 text-uppercase fw-bold w-100">
-                Erase
-            </button>
-        </div>
-        <div class="col-12 col-md p-2">
-            <button @onclick="ClearLayer" class="btn btn-warning btn-lg py-5 text-uppercase fw-bold w-100">
-                Clear Layer
-            </button>
-        </div>
-        <div class="col-12 col-md p-2">
-            <button @onclick="FullScreen" class="btn btn-secondary btn-lg py-5 text-uppercase fw-bold w-100">
-                Full Screen
-            </button>
-        </div>
-    </div>
-</div>
+<ButtonsContainer Title="Krita Shortcuts">
+    <ShortucutButton Text="Undo" @onclick="Undo" Col="6" Color="danger" />
+    <ShortucutButton Text="Redo" @onclick="Redo" Col="6" Color="primary" />
+    <ShortucutButton Text="Erase" @onclick="Erase" Col="12" Color="info" />
+    <ShortucutButton Text="Clear Layer" @onclick="ClearLayer" Col="12" Color="warning" />
+    <ShortucutButton Text="Full Screen" @onclick="FullScreen" Col="12" Color="secondary" />
+</ButtonsContainer>
 
 @code {
-
     private void Undo()
     {
         krita.Undo();
