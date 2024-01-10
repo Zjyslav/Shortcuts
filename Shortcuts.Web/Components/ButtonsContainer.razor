@@ -1,13 +1,15 @@
 ﻿<PageTitle>@Title</PageTitle>
 
-    <h1 class="display-1 text-center">@Title</h1>
-<div class="row justify-content-between">
+<h1>@Title</h1>
+<div class="grid grid-cols-@Cols gap-3">
     @ChildContent
 </div>
 
 @code {
     [Parameter]
-    public string Title { get; set; }
+    public string Title { get; set; } = "";
     [Parameter, EditorRequired]
     public RenderFragment ChildContent { get; set; } = default!;
+    [Parameter]
+    public int Cols { get; set; } = 2;
 }

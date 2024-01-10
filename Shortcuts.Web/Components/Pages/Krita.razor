@@ -3,22 +3,18 @@
 @inject KritaService krita
 @layout ButtonsPageLayout
 
-<ButtonsContainer Title="Krita Shortcuts">
-    <ShortucutButton Text="Undo" @onclick="Undo" Col="6" Color="danger" />
-    <ShortucutButton Text="Redo" @onclick="Redo" Col="6" Color="primary" />
-    <ShortucutButton Text="Erase" @onclick="Erase" Col="12" Color="info" />
-    <ShortucutButton Text="Clear Layer" @onclick="ClearLayer" Col="12" Color="warning" />
-    <ShortucutButton Text="Full Screen" @onclick="FullScreen" Col="12" Color="secondary" />
+<ButtonsContainer Title="Krita Shortcuts" Cols="2">
+    <ShortucutButton Text="Undo" @onclick="Undo" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Redo" @onclick="Redo" ColSpan="1" ColorFrom="red-400" ColorTo="red-700"/>
+    <ShortucutButton Text="Erase" @onclick="Erase" ColSpan="2" ColorFrom="zinc-300" ColorTo="sky-400" />
+    <ShortucutButton Text="Clear Layer" @onclick="ClearLayer" ColSpan="2" ColorFrom="amber-400" ColorTo="orange-600"/>
+    <ShortucutButton Text="Full Screen" @onclick="FullScreen" ColSpan="2" ColorFrom="green-400" ColorTo="lime-600"/>
 </ButtonsContainer>
 
 @code {
     private void Undo() => krita.Undo();
-
     private void Redo() => krita.Redo();
-
     private void FullScreen() => krita.FullScreen();
-
     private void ClearLayer() => krita.ClearLayer();
-
     private void Erase() => krita.Erase();
 }
