@@ -1,5 +1,5 @@
-﻿<div>
-    <button @attributes="AdditionalAttributes">
+﻿<div class="grid place-items-center col-span-@ColSpan">
+    <button class="shortcut-button from-@ColorFrom to-@ColorTo" @attributes="AdditionalAttributes">
         @Text
     </button>
 </div>
@@ -8,9 +8,11 @@
     [Parameter]
     public string Text { get; set; } = "";
     [Parameter]
-    public int Col { get; set; } = 12;
+    public int ColSpan { get; set; } = 1;
     [Parameter]
-    public string Color { get; set; } = "primary";
+    public string ColorFrom { get; set; } = "blue-400";
+    [Parameter]
+    public string ColorTo { get; set; } = "blue-600";
 
     [Parameter(CaptureUnmatchedValues = true)]
     public Dictionary<string, object>? AdditionalAttributes { get; set; }

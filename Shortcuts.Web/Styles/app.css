@@ -1,3 +1,22 @@
-﻿@tailwind base;
+﻿@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;900&display=swap');
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    @apply bg-slate-700 text-slate-700;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    @apply text-6xl text-center font-thin py-6 text-gray-300;
+}
+
+.nav-button {
+    @apply uppercase font-bold rounded-md py-5 bg-gradient-to-br transition duration-700 hover:scale-105 w-full h-full grid place-items-center shadow-md hover:-hue-rotate-15 hover:text-gray-200;
+}
+
+.shortcut-button {
+    @apply uppercase font-bold text-4xl h-full w-full block py-10 rounded-md shadow-md shadow-gray-800 transition duration-300 hover:-translate-y-0.5 hover:text-gray-200 bg-gradient-to-br;
+}
