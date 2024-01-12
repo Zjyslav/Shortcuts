@@ -10,7 +10,7 @@ body {
 }
 
 h1 {
-    @apply text-6xl text-center font-thin py-6 text-gray-300;
+    @apply text-4xl sm:text-6xl text-center font-thin py-6 text-gray-300;
 }
 
 .nav-button {
@@ -18,5 +18,5 @@ h1 {
 }
 
 .shortcut-button {
-    @apply uppercase font-bold text-4xl h-full w-full block py-10 rounded-md shadow-md shadow-gray-800 transition duration-300 hover:-translate-y-0.5 hover:text-gray-200 bg-gradient-to-br;
+    @apply uppercase font-bold text-2xl sm:text-4xl h-full w-full block py-8 rounded-md shadow-md shadow-gray-800 transition duration-300 hover:-translate-y-0.5 hover:text-gray-200 bg-gradient-to-br;
 }
