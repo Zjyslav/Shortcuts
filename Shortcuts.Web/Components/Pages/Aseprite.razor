@@ -1,0 +1,32 @@
+﻿@page "/Aseprite"
+@rendermode InteractiveServer
+@inject AsepriteService aseprite
+@layout ButtonsPageLayout
+
+<ButtonsContainer Title="Aseprite Shortcuts" Cols="2">
+    <ShortucutButton Text="Undo" @onclick="Undo" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Redo" @onclick="Redo" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Pencil" @onclick="PencilTool" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Eraser" @onclick="Eraser" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Bucket" @onclick="BucketTool" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Eyedrop" @onclick="Eyedropper" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Clear" @onclick="Clear" ColSpan="2" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Advanced" @onclick="AdvancedMode" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Grid" @onclick="Grid" ColSpan="1" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Fit On Screen" @onclick="FitOnScreen" ColSpan="2" ColorFrom="blue-400" ColorTo="blue-700" />
+    <ShortucutButton Text="Fullscreen Preview" @onclick="FullscreenPreview" ColSpan="2" ColorFrom="blue-400" ColorTo="blue-700" />
+</ButtonsContainer>
+
+@code {
+    private void Undo() => aseprite.Undo();
+    private void Redo() => aseprite.Redo();
+    private void PencilTool() => aseprite.PencilTool();
+    private void Eraser() => aseprite.Eraser();
+    private void Eyedropper() => aseprite.Eyedropper();
+    private void BucketTool() => aseprite.BucketTool();
+    private void AdvancedMode() => aseprite.AdvancedMode();
+    private void Grid() => aseprite.Grid();
+    private void FullscreenPreview() => aseprite.FullscreenPreview();
+    private void FitOnScreen() => aseprite.FitOnScreen();
+    private void Clear() => aseprite.Clear();
+}
