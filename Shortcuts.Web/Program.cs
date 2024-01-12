@@ -10,6 +10,7 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddSingleton<ShortcutsClient>();
 builder.Services.AddTransient<KritaService>();
+builder.Services.AddTransient<AsepriteService>();
 
 var app = builder.Build();
 
