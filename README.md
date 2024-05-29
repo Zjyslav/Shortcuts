@@ -17,7 +17,7 @@ I decided to expand the project to handle also other software, such as [Aseprite
 
 | Home  | Krita | Aseprite | Aseprite |
 :---:|:---:|:---:|:---:
-| <img src="docs/screenshots/screenshot-04.jpg" width=250> | <img src="docs/screenshots/screenshot-01.jpg" width = 250> | <img src="docs/screenshots/screenshot-02.jpg" width=250> | <img src="docs/screenshots/screenshot-03.jpg" width=250> |
+| <img src="docs/screenshots/screenshot-04.jpg" width=175> | <img src="docs/screenshots/screenshot-01.jpg" width = 175> | <img src="docs/screenshots/screenshot-02.jpg" width=175> | <img src="docs/screenshots/screenshot-03.jpg" width=175> |
 
 ## How it works
 The solution consists of 2 projects.
