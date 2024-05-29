@@ -5,6 +5,20 @@ A simple application that allows user to fire shortcuts in a specified program o
 The general purpose of this app was initially to help access shortcuts in [Krita](https://krita.org/) graphics program when using pen tablet without sufficient amount of buttons. Reaching keyboard and pushing up to 3 keys can be awkward while drawing and having to find a button in Krita to press can break a flow of your work, so I created a solution in form of a web app that you can open on your phone and have a few easy to press buttons ready.
 I decided to expand the project to handle also other software, such as [Aseprite](https://www.aseprite.org/).
 
+## Technologies used
+
+* C#/.NET
+* Blazor Server
+* gRPC
+* Windows Forms
+* user32.dll via DllImport
+
+## Screenshots
+
+| Home  | Krita | Aseprite | Aseprite |
+:---:|:---:|:---:|:---:
+| <img src="docs/screenshots/screenshot-04.jpg" width=250> | <img src="docs/screenshots/screenshot-01.jpg" width = 250> | <img src="docs/screenshots/screenshot-02.jpg" width=250> | <img src="docs/screenshots/screenshot-03.jpg" width=250> |
+
 ## How it works
 The solution consists of 2 projects.
 - Blazor Web app
