@@ -12,6 +12,7 @@ I decided to expand the project to handle also other software, such as [Aseprite
 * gRPC
 * Windows Forms
 * user32.dll via DllImport
+* Tailwind CSS
 
 ## Screenshots
 
